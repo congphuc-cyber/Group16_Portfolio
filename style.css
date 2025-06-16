@@ -1,0 +1,205 @@
+body {
+  background-color: #eaeaea;
+  overflow: hidden;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 600px;
+  padding: 50px;
+  background-color: #f5f5f5;
+  box-shadow: 0 30px 50px #dbdbdb;
+}
+
+#slide {
+  width: max-content;
+  margin-top: 50px;
+}
+
+.item {
+  width: 200px;
+  height: 300px;
+  background-position: 50% 50%;
+  display: inline-block;
+  transition: 0.5s;
+  background-size: cover;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 20px;
+  box-shadow: 0 30px 50px #505050;
+}
+
+/* Vị trí các item */
+.item:nth-child(1),
+.item:nth-child(2) {
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+}
+.item:nth-child(3) { left: 50%; }
+.item:nth-child(4) { left: calc(50% + 220px); }
+.item:nth-child(5) { left: calc(50% + 440px); }
+.item:nth-child(n+6) {
+  left: calc(50% + 660px);
+  opacity: 0;
+}
+
+/* Ẩn dummy */
+.item.dummy {
+  opacity: 0;
+}
+
+/* Hình nền cho từng item */
+.bg2 { background-image: url('2.jpg'); }
+.bg3 { background-image: url('3.jpg'); }
+.bg4 { background-image: url('4.jpg'); }
+.bg5 { background-image: url('5.jpg'); }
+.bg6 { background-image: url('6.jpg'); }
+.dummy { background-image: url('dummy.jpg'); }
+
+/* Hình nền shape từng người */
+.avatar2 { background-image: url('avatar2.jpg'); }
+.avatar3 { background-image: url('avatar3.jpg'); }
+.avatar4 { background-image: url('avatar4.jpg'); }
+.avatar5 { background-image: url('avatar5.jpg'); }
+.avatar6 { background-image: url('avatar6.jpg'); }
+
+/* Tiêu đề góc phải */
+.corner-title {
+  position: absolute;
+  top: 50px;
+  right: 60px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 900; /* tăng độ dày tối đa */
+  color: #02ffc8; /* Màu xanh neon */
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); /* đổ bóng đậm hơn */
+  z-index: 9999;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-right: 200px; 
+}
+
+
+/* Nội dung trong item */
+.item .content {
+  position: absolute;
+  top: 54%;
+  left: 100px;
+  width: 340px;
+  text-align: left;
+  color: #ffb624;
+  transform: translate(0, -50%);
+  display: none;
+  font-family: 'Pacifico', cursive;
+  z-index: 10;
+}
+
+.item:nth-child(2) .content {
+  display: block;
+  z-index: 11111;
+}
+
+.item.bg5 .des,
+.item.bg6 .des {
+  margin-left: 20px; 
+}
+
+/* Hình shape đại diện */
+.shape {
+  width: 280px;   /* to thêm */
+  height: 360px;  /* to thêm */
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: showcontent 1s ease-in-out 0.1s forwards;
+}
+
+/* Mô tả */
+.des {
+  margin: 12px 0;
+  font-size: 40px;
+  opacity: 0;
+  animation: showcontent 1s ease-in-out 0.3s forwards;
+}
+
+/* Nút */
+.item button {
+  padding: 16px 36px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg,
+    #ff6f6f,
+    #ff4d4d,
+    #ff8a65,
+    #ffd3b6,
+    #fff0e6
+  );
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  opacity: 0;
+  animation: showcontent 1s ease-in-out 0.6s forwards;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s, transform 0.3s;
+  margin-left: 50px; /* xích nút sang phải */
+}
+
+.item button:hover {
+  background: linear-gradient(135deg,
+    #ff5e5e, #ff3c3c, #ff7043, #ffccac, #fff5ec
+  );
+  transform: translateY(-4px);
+}
+
+/* Nút điều hướng */
+.buttons {
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+  width: 100%;
+  z-index: 10000;
+}
+
+.buttons button {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  background-color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.buttons button:hover {
+  background-color: #bac383;
+}
+
+/* Hiệu ứng hiện nội dung */
+@keyframes showcontent {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+    filter: blur(33px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
